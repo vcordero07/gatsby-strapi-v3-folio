@@ -19,5 +19,32 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      // resolve: `gatsby-source-strapi`,
+      // options: {
+      //   apiURL: `http://localhost:1337`,
+      //   queryLimit: 1000, // Defaults to 100
+      //   collectionTypes: [`jobs`],
+      //   // singleTypes: [`home-page`, `contact`],
+      //   // Possibility to login with a strapi user, when content types are not publically available (optional).
+      //   loginData: {
+      //     identifier: "",
+      //     password: "",
+      //   },
+      // },
+
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `http://localhost:1337/`,
+        queryLimit: 1000, // Defaults to 100
+        collectionTypes: [
+          {
+            name: `job`,
+            endpoint: `jobs/?populate=desc`,
+          },
+        ],
+        // singleTypes: [`home-page`, `contact`],
+      },
+    },
   ],
-}
+};
